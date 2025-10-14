@@ -1,0 +1,132 @@
+﻿<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact &mdash; Mackenzie Landscapes</title>
+  <meta name="description" content="Send us a message for a quote. Simple form with name, email, and message.">
+  <meta name="theme-color" content="#1B8A64">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <meta property="og:title" content="Contact &mdash; Mackenzie Landscapes">
+  <meta property="og:description" content="Tell us about your outdoor space and we will respond within one business day.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/IMG-4079-768x1024.jpg">
+  <meta property="og:locale" content="en_GB">
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<header class="site-header" data-elevate>
+  <div class="container header-inner">
+    <a class="logo" href="index.html" aria-label="Mackenzie Landscapes home">
+      <svg aria-hidden="true" viewBox="0 0 64 64"><use href="assets/img/favicon.svg#leaf"/></svg>
+      <span>Mackenzie<span class="accent">Landscapes</span></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="sr-only">Menu</span>
+      &#9776;
+    </button>
+    <nav id="site-nav" class="nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li class="has-dropdown">
+          <button class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+            Services
+          </button>
+          <ul class="dropdown-menu" hidden>
+            <li><a href="concept-and-design.html">Concept &amp; Design</a></li>
+            <li><a href="softscaping.html">Softscaping</a></li>
+            <li><a href="hardscaping.html">Hardscaping</a></li>
+            <li><a href="tree-care.html">Tree Care</a></li>
+            <li><a href="commercial.html">Commercial</a></li>
+            <li><a href="maintenance.html">Maintenance</a></li>
+          </ul>
+        </li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html" class="btn btn--primary">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="content">
+
+<section class="page-hero">
+  <div class="container narrow">
+    <p class="eyebrow">Start a project</p>
+    <h1>Contact</h1>
+    <p>Tell us about your space. We will reply within one business day with next steps.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split contact">
+    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required placeholder="Jane Doe" autocomplete="name">
+        <small class="error" data-for="name"></small>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required placeholder="jane@example.com" autocomplete="email">
+        <small class="error" data-for="email"></small>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required placeholder="What would you like to achieve?"></textarea>
+        <small class="error" data-for="message"></small>
+      </div>
+      <div class="field inline">
+        <label class="checkbox"><input type="checkbox" name="consent" required> I agree to you storing my details to reply.</label>
+      </div>
+      <input type="hidden" name="_subject" value="New enquiry from Mackenzie Landscapes site">
+      <button class="btn btn--primary" type="submit">Send message</button>
+      <p class="small">You can also email us at <a href="mailto:hello@example.com">hello@example.com</a>.</p>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+    <aside class="contact-aside">
+      <h2>Our details</h2>
+      <p><strong>Service area:</strong> Greater London &amp; South East</p>
+      <p><strong>Phone:</strong> <a href="tel:+442012345678">+44 20 1234 5678</a></p>
+      <p><strong>Email:</strong> <a href="mailto:hello@example.com">hello@example.com</a></p>
+      <div class="map-embed">
+        <img src="assets/img/IMG-4079-768x1024.jpg" alt="Mackenzie Landscapes project location with landscaped walkway">
+      </div>
+      <p class="small">By sending this form you consent to us contacting you about your enquiry. Replace this text with your privacy notice link.</p>
+    </aside>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid" data-reveal>
+    <div class="footer-brand">
+      <h4>Mackenzie Landscapes</h4>
+      <p>Modern landscaping &amp; garden design. Serving Greater London &amp; South East.</p>
+      <p class="small">Demo site &mdash; replace with your details.</p>
+    </div>
+    <nav aria-label="Footer">
+      <ul class="foot-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <address>
+      <p><strong>Call</strong> <a href="tel:+442012345678">+44 20 1234 5678</a></p>
+      <p><strong>Email</strong> <a href="mailto:hello@example.com">hello@example.com</a></p>
+      <p><strong>Hours</strong> Mon&ndash;Fri 09:00&ndash;17:00</p>
+    </address>
+  </div>
+  <div class="container fine">
+    <small>&copy; <span id="year"></span> Mackenzie Landscapes. All rights reserved. | <a href="#">Privacy</a></small>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
+
+
