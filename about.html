@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en-GB">
 <head>
   <meta charset="utf-8" />
@@ -16,90 +16,111 @@
 </head>
 <body>
 <a class="skip-link" href="#content">Skip to content</a>
-<header class="site-header" data-elevate>
-  <div class="container header-inner">
+<header class="site-header" data-header>
+  <div class="nav-inner">
     <a class="logo" href="index.html" aria-label="Mackenzie Landscapes home">
       <svg aria-hidden="true" viewBox="0 0 64 64"><use href="assets/img/favicon.svg#leaf"/></svg>
-      <span>Mackenzie<span class="accent">Landscapes</span></span>
+      <span class="visually-hidden">Mackenzie Landscapes</span>
     </a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
-      <span class="sr-only">Menu</span>
-      &#9776;
-    </button>
-    <nav id="site-nav" class="nav" aria-label="Primary">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li class="has-dropdown">
-          <button class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+    <nav class="primary-nav" aria-label="Primary">
+      <ul class="menu" role="menubar">
+        <li class="menu-item"><a role="menuitem" href="index.html">Home</a></li>
+        <li class="menu-item"><a role="menuitem" href="about.html">About</a></li>
+        <li class="menu-item has-panel" data-menu="services">
+          <button class="menu-trigger" type="button" aria-expanded="false" aria-controls="panel-services" role="menuitem">
             Services
           </button>
-          <ul class="dropdown-menu" hidden>
-            <li><a href="concept-and-design.html">Concept &amp; Design</a></li>
-            <li><a href="softscaping.html">Softscaping</a></li>
-            <li><a href="hardscaping.html">Hardscaping</a></li>
-            <li><a href="tree-care.html">Tree Care</a></li>
-            <li><a href="commercial.html">Commercial</a></li>
-            <li><a href="maintenance.html">Maintenance</a></li>
-          </ul>
+          <div id="panel-services" class="menu-panel" role="menu" hidden>
+            <div class="panel-col" role="none">
+              <span class="panel-heading">Design &amp; Planning</span>
+              <a role="menuitem" href="concept-and-design.html">Concept &amp; Design</a>
+              <a role="menuitem" href="softscaping.html">Softscaping</a>
+            </div>
+            <div class="panel-col" role="none">
+              <span class="panel-heading">Build &amp; Care</span>
+              <a role="menuitem" href="hardscaping.html">Hardscaping</a>
+              <a role="menuitem" href="tree-care.html">Tree Care</a>
+              <a role="menuitem" href="commercial.html">Commercial</a>
+              <a role="menuitem" href="maintenance.html">Maintenance</a>
+            </div>
+          </div>
         </li>
-        <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="contact.html" class="btn btn--primary">Contact</a></li>
+        <li class="menu-item has-panel" data-menu="projects">
+          <button class="menu-trigger" type="button" aria-expanded="false" aria-controls="panel-projects" role="menuitem">
+            Projects
+          </button>
+          <div id="panel-projects" class="menu-panel" role="menu" hidden>
+            <div class="panel-col" role="none">
+              <span class="panel-heading">Featured</span>
+              <a role="menuitem" href="gallery.html">Gallery Overview</a>
+              <a role="menuitem" href="gallery.html#lighting">Lighting &amp; ambience</a>
+            </div>
+            <div class="panel-col" role="none">
+              <span class="panel-heading">Details</span>
+              <a role="menuitem" href="gallery.html#hardscape">Hardscape detailing</a>
+              <a role="menuitem" href="gallery.html#planting">Planting inspiration</a>
+            </div>
+          </div>
+        </li>
+        <li class="menu-item"><a role="menuitem" href="pricing.html">Pricing</a></li>
       </ul>
     </nav>
+    <div class="nav-cta">
+      <a class="cta" href="contact.html">Contact Us</a>
+      <a class="phone" href="tel:+442012345678">+44 20 1234 5678</a>
+    </div>
   </div>
 </header>
-<main id="content">
-
-<section class="page-hero">
-  <div class="container narrow">
-    <p class="eyebrow">Our story</p>
-    <h1>About Mackenzie Landscapes</h1>
-    <p>We are a small, detail-obsessed team focused on simple, durable landscapes that are built to last and easy to live with.</p>
-  </div>
-</section>
-
-<section class="section">
+<main id="content"><section class="section">
   <div class="container split">
-    <div>
-      <h2>Our approach</h2>
-      <p>Every garden begins with understanding how you want to live outdoors. From there we design spaces that balance structure, planting, and long-term care.</p>
-      <ul class="checklist">
-        <li>Design first: we prototype layouts and planting before we build.</li>
-        <li>Materials that age well: stone, hardwoods, and low-water planting.</li>
-        <li>Transparent pricing, tidy sites, and clear communication.</li>
-      </ul>
+    <div data-reveal>
+      <h1>About Us</h1>
+      <h2 class="section-title">Meet Mackenzie Landscapes</h2>
+      <p>At Mackenzie Landscapes we believe your outdoor space is an extension of your home&mdash;a place to relax, entertain and connect with nature. Every garden we shape is designed to feel calm, functional and deeply personal.</p>
+      <p>Founded by a new generation of landscaping professionals, our vision blends refined design with practical craftsmanship so the spaces we deliver feel timeless and live beautifully.</p>
     </div>
-    <div class="callout">
-      <h3>Facts &amp; figures</h3>
-      <p><strong>12</strong> specialists across design, build, and horticulture.</p>
-      <p><strong>140+</strong> projects delivered around Greater London.</p>
-      <p><strong>92%</strong> of work comes from referrals.</p>
+    <div data-reveal>
+      <img class="rounded" src="assets/img/Racket-Town-Cottage-Tresco-2025-9.jpg" alt="Mackenzie Landscapes team at work on a London garden">
+    </div>
+  </div>
+</section><div id="header-sentinel" aria-hidden="true"></div>
+
+<section class="section section--story">
+  <div class="container split">
+    <div data-reveal>
+      <h2 class="section-title">Our Story</h2>
+      <p>Growing up surrounded by garden-making and green spaces, the founder of Mackenzie Landscapes knew early on that outdoor design is about more than just plants and paving. It is about atmosphere, flow and purpose.</p>
+      <p>After working alongside premium landscaping teams and studying contemporary garden design, we brought those high-end standards home to London&mdash;serving Central London, South West London and the wider Greater London area.</p>
+      <p>We draw on the rich heritage of UK gardens, pairing natural materials, seasonal planting and thoughtful layout with modern build techniques and sustainable practices. Every project is personal to us&mdash;we treat your garden as our own.</p>
+    </div>
+    <div data-reveal>
+      <img class="rounded" src="assets/img/IMG-5156-1260x945.jpg" alt="Design sketches, planting palettes and material samples laid out on a desk">
     </div>
   </div>
 </section>
 
 <section class="section alt">
   <div class="container">
-    <h2>Values that guide our work</h2>
-    <div class="grid three">
-      <article class="card" data-reveal>
+    <div data-reveal>
+      <h2 class="section-title">What We Stand For</h2>
+    </div>
+    <div class="grid three approach-grid" data-reveal>
+      <article class="card">
         <div class="card-body">
-          <h3>Design integrity</h3>
-          <p>We pair structural clarity with planting character so every space feels intentional year-round.</p>
+          <h3>Design to live in.</h3>
+          <p>We craft bespoke layouts, lighting and planting schemes that bridge indoor and outdoor life&mdash;from formal terraces to relaxed family gardens.</p>
         </div>
       </article>
-      <article class="card" data-reveal>
+      <article class="card">
         <div class="card-body">
-          <h3>Considered materials</h3>
-          <p>Sustainably sourced timbers, locally quarried stone, and smart irrigation keep your garden resilient.</p>
+          <h3>Craftsmanship you can trust.</h3>
+          <p>Our in-house build team delivers quality stonework, joinery, paving and decks with rigorous attention to detail and respect for neighbours and place.</p>
         </div>
       </article>
-      <article class="card" data-reveal>
+      <article class="card">
         <div class="card-body">
-          <h3>Care that lasts</h3>
-          <p>We stay involved after installation with maintenance plans tailored to how you use your space.</p>
+          <h3>Long-term care.</h3>
+          <p>A garden should look great today and even better tomorrow. Our maintenance services protect your investment and guide each landscape as it matures.</p>
         </div>
       </article>
     </div>
@@ -107,38 +128,47 @@
 </section>
 
 <section class="section">
-  <div class="container about-gallery">
-    <div class="about-gallery__copy" data-reveal>
-      <h2>Behind the builds</h2>
-      <p>Studio life, material palettes, and onsite progress shots that show how every Mackenzie Landscapes project comes together.</p>
-      <p class="small">Want to see more transformations? Browse our extended project gallery.</p>
-      <a class="btn btn--ghost" href="gallery.html">Explore the gallery</a>
+  <div class="container split">
+    <div data-reveal>
+      <h2 class="section-title">Our Approach</h2>
+      <p>From the initial consultation to the final hand-over, we keep the process curated, transparent and client-focused.</p>
+      <ul class="checklist">
+        <li><strong>We listen:</strong> We learn about your lifestyle, your space and your goals, then collaborate on a timeless design concept.</li>
+        <li><strong>We plan with precision:</strong> Detailed layouts, material schedules and coordinated lighting and irrigation plans keep every trade aligned.</li>
+        <li><strong>We deliver with excellence:</strong> Clean site management, in-house teams and weekly progress updates protect programme and quality.</li>
+        <li><strong>We maintain with care:</strong> Seasonal checks, soil health monitoring and gardening that honours the original design intent.</li>
+      </ul>
     </div>
-    <div class="about-gallery__grid" data-reveal>
-      <figure>
-        <img src="assets/img/IMG-4079-768x1024.jpg" alt="Mackenzie Landscapes designer reviewing layout sketches in the studio">
-        <figcaption>Design reviews and planting plans in the studio.</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/img/IMG-2493-1260x1680.jpg" alt="Lighting accents highlighting stone steps at dusk">
-        <figcaption>Layered lighting bringing evening warmth.</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/img/IMG-0066-630x840.jpg" alt="Courtyard planting detail with textured foliage">
-        <figcaption>Textured planting swatches we test on site.</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/img/IMG-5294-1024x768.jpg" alt="Crew installing a paved walkway">
-        <figcaption>Construction team setting out a new pathway.</figcaption>
-      </figure>
+    <div data-reveal>
+      <img class="rounded" src="assets/img/Racket-Town-Cottage-Tresco-2025-27.jpg" alt="Garden maintenance in progress with structured planting">
     </div>
   </div>
 </section>
 
+<section class="section alt">
+  <div class="container" data-reveal>
+    <h2 class="section-title">Our Promise</h2>
+    <p>Whether it is a sleek city courtyard, a family home&rsquo;s private garden or a large-scale urban landscape, we bring the same commitment: superior materials, thoughtful design and outstanding service. With Mackenzie Landscapes you gain a partner dedicated to creating a living, breathing outdoor space you will enjoy for years to come.</p>
+  </div>
+</section>
+
 <section class="section">
-  <div class="container testimonial" data-reveal>
-    <blockquote>&ldquo;Mackenzie Landscapes translated our ideas into a garden that feels like a natural extension of our home. The team were meticulous, respectful, and finished ahead of schedule.&rdquo;</blockquote>
-    <cite>â€” Alex &amp; Priya, Hackney townhouse</cite>
+  <div class="container" data-reveal>
+    <h2 class="section-title">Meet the Team</h2>
+    <p>Our core team is small by choice&mdash;a tight-knit group of design-led landscapers who believe in quality over quantity. We collaborate with trusted specialist suppliers and contractors when needed, while our in-house crew manages the build phase to maintain consistency and accountability.</p>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container split">
+    <div data-reveal>
+      <h2 class="section-title">Let&rsquo;s Get Started</h2>
+      <p>If you are ready to transform your outdoor living, connect with us for a consultation. Together we will create a garden designed for you, built to last and maintained for life.</p>
+    </div>
+    <div class="enquiry__actions" data-reveal>
+      <a class="btn btn--primary" href="contact.html">Book a consultation</a>
+      <a class="btn btn--secondary" href="tel:+442012345678"><span data-alt="Call the studio">Call the studio</span></a>
+    </div>
   </div>
 </section>
 
@@ -147,8 +177,7 @@
   <div class="container footer-grid" data-reveal>
     <div class="footer-brand">
       <h4>Mackenzie Landscapes</h4>
-      <p>Modern landscaping &amp; garden design. Serving Greater London &amp; South East.</p>
-      <p class="small">Demo site &mdash; replace with your details.</p>
+      <p>Modern landscaping &amp; garden design. Serving Central &amp; South West London and the wider Greater London area.</p>
     </div>
     <nav aria-label="Footer">
       <ul class="foot-links">
@@ -160,7 +189,7 @@
     </nav>
     <address>
       <p><strong>Call</strong> <a href="tel:+442012345678">+44 20 1234 5678</a></p>
-      <p><strong>Email</strong> <a href="mailto:hello@example.com">hello@example.com</a></p>
+      <p><strong>Email</strong> <a href="mailto:hello@mackenzielandscapes.co.uk">hello@mackenzielandscapes.co.uk</a></p>
       <p><strong>Hours</strong> Mon&ndash;Fri 09:00&ndash;17:00</p>
     </address>
   </div>
@@ -171,5 +200,16 @@
 <script src="assets/js/main.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 
 
