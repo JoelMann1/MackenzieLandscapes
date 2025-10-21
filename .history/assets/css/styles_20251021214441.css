@@ -411,8 +411,8 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
   .signature-row__panel,
   .signature-row__title::after,
   .signature-row__title::before,
-  .signature-row__index{ transition:none !important; }
-}
+  .signature-row__index,
+  }
 
 .anchor-target{ position:relative; top:-140px; height:0; pointer-events:none; }
 
@@ -439,30 +439,6 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
   }
   .about-preview__list,
   .process__intro p{
-    text-align:center;
-  }
-  .about-preview__list{
-    list-style-position:inside;
-  }
-  .about-preview__actions,
-  .enquiry__actions{
-    flex-direction:column;
-    align-items:center;
-    width:100%;
-  }
-  .about-preview__actions .btn,
-  .enquiry__actions .btn{
-    width:100%;
-    max-width:320px;
-    justify-content:center;
-  }
-  .process__intro,
-  .testimonials__header{
-    text-align:center;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .process__steps li{
     text-align:center;
   }
 }
@@ -2460,11 +2436,7 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
   }
   .enquiry{
     flex-direction:column;
-    align-items:center;
-    text-align:center;
-  }
-  .enquiry__copy{
-    text-align:center;
+    align-items:flex-start;
   }
 }
 @media (max-width:768px){

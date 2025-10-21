@@ -2460,11 +2460,7 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
   }
   .enquiry{
     flex-direction:column;
-    align-items:center;
-    text-align:center;
-  }
-  .enquiry__copy{
-    text-align:center;
+    align-items:flex-start;
   }
 }
 @media (max-width:768px){
