@@ -289,9 +289,23 @@
     rows.forEach(row => {
       const control = row.querySelector('.signature-row__control');
       if(!control) return;
-      control.addEventListener('change', () => { if(control.checked){ updatePreview(row); } });
       const toggle = row.querySelector('.signature-row__toggle');
-      if(toggle){ toggle.addEventListener('focus', () => { if(control.checked){ updatePreview(row); } }); }
+      const panel = row.querySelector('.signature-row__panel');
+      const syncState = ()=>{
+        const expanded = control.checked;
+        if(toggle){ toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false'); }
+        if(panel){ panel.setAttribute('aria-hidden', expanded ? 'false' : 'true'); }
+        row.classList.toggle('is-open', expanded);
+      };
+      syncState();
+      control.addEventListener('change', () => {
+        syncState();
+        if(control.checked){ updatePreview(row); }
+      });
+      if(toggle){
+        toggle.addEventListener('focus', () => { if(control.checked){ updatePreview(row); } });
+        toggle.addEventListener('mouseenter', () => updatePreview(row));
+      }
     });
     const initial = rows.find(row => { const ctrl = row.querySelector('.signature-row__control'); return ctrl && ctrl.checked; }) || rows[0];
     if(initial){ updatePreview(initial); }

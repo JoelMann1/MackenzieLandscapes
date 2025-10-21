@@ -884,8 +884,9 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
   transform:scaleX(1);
 }
 .signature-row.is-open{
-  background:#0e0e0c;
+  background:linear-gradient(135deg, rgba(84,101,66,.12) 0%, rgba(14,14,12,0) 80%);
   border-color:rgba(255,255,255,.18);
+  box-shadow:0 12px 32px rgba(4,4,4,.22);
 }
 .signature-row__panel{
   --panel-max:0px;
@@ -1173,8 +1174,8 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
 .gallery-callout .btn{ align-self:flex-start; }
 .gallery-grid{
   display:grid;
-  gap:clamp(1rem, 2vw, 1.5rem);
-  grid-template-columns:repeat(3, 1fr);
+  gap:1rem;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
 }
 .gallery-grid img{
   width:100%;
@@ -1182,22 +1183,6 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
   object-fit:cover;
   border-radius:var(--radius-sm);
   box-shadow:var(--shadow);
-  transition:transform .3s ease, box-shadow .3s ease;
-}
-.gallery-grid img:hover{
-  transform:scale(1.02);
-  box-shadow:0 12px 40px rgba(38,53,27,.18);
-}
-@media (max-width:900px){
-  .gallery-grid{
-    grid-template-columns:repeat(2, 1fr);
-  }
-}
-@media (max-width:640px){
-  .gallery-grid{
-    grid-template-columns:1fr;
-    gap:1rem;
-  }
 }
 .gallery-cta{
   display:flex;
@@ -2146,9 +2131,7 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
 }
 
 .section--testimonials{
-  background:#0e0e0c;
-  color:#f6f6f3;
-  padding:clamp(3.2rem, 6vw, 5.2rem) 0;
+  background:var(--bg-0);
 }
 .testimonials--elevated{
   display:grid;
@@ -2157,79 +2140,44 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
 .testimonials__header{
   max-width:720px;
 }
-.section--testimonials .section-title{
-  color:#f6f6f3;
-}
 .testimonials__header p{
   margin-bottom:1rem;
-  color:rgba(233,237,232,.72);
 }
 .testimonials__header > p:last-of-type{
-  font-size:1.12rem;
+  font-size:1.1rem;
   font-weight:500;
-  color:rgba(241,244,240,.86);
+  color:rgba(43,58,51,.82);
 }
 .testimonials__credit{
   display:inline-block;
-  margin-top:.2rem;
+  margin-top:.3rem;
   font-size:.95rem;
-  color:rgba(193,206,174,.8);
-  letter-spacing:.14em;
-  text-transform:uppercase;
+  color:rgba(91,104,84,.76);
 }
 .testimonials__stories{
   display:grid;
-  gap:clamp(1.6rem, 2.8vw, 2.6rem);
-  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:clamp(1.6rem, 2.4vw, 2.4rem);
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
 }
 .testimonials__stories .testimonial-card{
-  position:relative;
-  background:rgba(14,14,12,.55);
-  border:1px solid rgba(157,175,128,.32);
-  border-radius:20px;
-  padding:clamp(1.6rem, 2.4vw, 2.4rem);
-  box-shadow:0 22px 42px rgba(8,12,9,.4);
-  backdrop-filter:blur(4px);
-  transition:border-color .3s var(--easing), transform .3s var(--easing), box-shadow .3s var(--easing);
-}
-.testimonials__stories .testimonial-card:hover{
-  border-color:rgba(193,206,174,.6);
-  transform:translateY(-4px);
-  box-shadow:0 26px 48px rgba(8,12,9,.48);
-}
-.testimonial-card__icon{
-  width:2.2rem;
-  height:2.2rem;
-  border-radius:999px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:1.1rem;
-  background:rgba(193,206,174,.16);
-  color:#a8bc83;
-  border:1px solid rgba(193,206,174,.28);
+  background:var(--bg-0);
+  border:1px solid rgba(91,104,84,.18);
+  border-radius:16px;
+  padding:clamp(1.4rem, 2vw, 2.2rem);
+  box-shadow:0 20px 36px rgba(13,35,25,.08);
 }
 .testimonials__stories .testimonial-card h3{
   margin:0 0 .9rem;
-  color:#d0ddbb;
-  letter-spacing:.1em;
+  color:var(--brand-600);
+  letter-spacing:.06em;
   text-transform:uppercase;
-  font-size:.82rem;
+  font-size:.78rem;
 }
 .testimonials__stories blockquote{
-  margin:0 0 1.1rem;
-  font-size:1.02rem;
-  color:rgba(241,244,240,.86);
+  margin:0 0 .8rem;
+  font-size:1rem;
+  color:rgba(43,58,51,.82);
   font-weight:500;
-  line-height:1.6;
-}
-.testimonial-name{
-  margin:0;
-  color:rgba(193,206,174,.78);
-  font-weight:600;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  font-size:.72rem;
 }
 
 .section--enquiry{
