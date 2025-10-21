@@ -1385,29 +1385,39 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
 
 /* Footer CTA Button */
 .footer-hero__cta{
-  margin-top:clamp(1.8rem, 3vw, 2.5rem);
+  margin-top:clamp(2.5rem, 5vw, 4rem);
   opacity:0;
-  animation:footerFadeIn .8s cubic-bezier(.16,1,.3,1) .4s forwards;
+  animation:footerFadeIn 1s cubic-bezier(.16,1,.3,1) .6s forwards;
 }
 .footer-cta-btn{
   display:inline-flex;
   align-items:center;
-  gap:.8rem;
-  padding:clamp(.85rem, 1.5vw, 1rem) clamp(1.8rem, 3vw, 2.2rem);
+  gap:1rem;
+  padding:clamp(1rem, 2vw, 1.4rem) clamp(2rem, 4vw, 3rem);
   background:#fff;
   color:#0a0a0a;
   text-decoration:none;
-  font-size:clamp(.95rem, 1.05vw, 1rem);
-  font-weight:500;
-  border-radius:6px;
-  transition:all .3s cubic-bezier(.16,1,.3,1);
+  font-size:clamp(1rem, 1.2vw, 1.15rem);
+  font-weight:600;
+  border-radius:100px;
+  transition:all .4s cubic-bezier(.16,1,.3,1);
   position:relative;
-  border:1px solid rgba(255,255,255,.1);
+  overflow:hidden;
+}
+.footer-cta-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, rgba(255,255,255,.2) 0%, transparent 100%);
+  opacity:0;
+  transition:opacity .4s ease;
 }
 .footer-cta-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 24px rgba(255,255,255,.12);
-  background:rgba(255,255,255,.95);
+  transform:scale(1.05);
+  box-shadow:0 20px 60px rgba(255,255,255,.15);
+}
+.footer-cta-btn:hover::before{
+  opacity:1;
 }
 @keyframes footerFadeIn{
   to{
@@ -1521,6 +1531,12 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
 
 /* Mobile Responsiveness */
 @media (max-width:1000px){
+  .footer-hero__line--large{
+    margin-left:clamp(.5rem, 2vw, 1rem);
+  }
+  .footer-hero__line--accent{
+    margin-left:clamp(1rem, 4vw, 2rem);
+  }
   .footer-main{
     grid-template-columns:1fr;
     gap:clamp(2.5rem, 5vw, 3.5rem);
@@ -1531,16 +1547,17 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
 }
 @media (max-width:640px){
   .footer-hero{
-    padding:clamp(2rem, 5vw, 2.5rem) 0 clamp(2.5rem, 6vw, 3rem);
-  }
-  .footer-hero__title{
-    line-height:1.2;
+    padding:clamp(2rem, 6vw, 3rem) 0 clamp(3rem, 8vw, 4rem);
   }
   .footer-hero__line{
-    font-size:clamp(1.6rem, 6vw, 2rem);
+    font-size:clamp(2.2rem, 9vw, 3rem);
   }
   .footer-hero__line--large{
-    font-size:clamp(1.6rem, 6vw, 2rem);
+    font-size:clamp(2.8rem, 12vw, 4rem);
+    margin-left:0;
+  }
+  .footer-hero__line--accent{
+    margin-left:0;
   }
   .footer-nav{
     grid-template-columns:1fr;

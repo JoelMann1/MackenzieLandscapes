@@ -1521,6 +1521,12 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
 
 /* Mobile Responsiveness */
 @media (max-width:1000px){
+  .footer-hero__line--large{
+    margin-left:clamp(.5rem, 2vw, 1rem);
+  }
+  .footer-hero__line--accent{
+    margin-left:clamp(1rem, 4vw, 2rem);
+  }
   .footer-main{
     grid-template-columns:1fr;
     gap:clamp(2.5rem, 5vw, 3.5rem);
@@ -1531,16 +1537,17 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
 }
 @media (max-width:640px){
   .footer-hero{
-    padding:clamp(2rem, 5vw, 2.5rem) 0 clamp(2.5rem, 6vw, 3rem);
-  }
-  .footer-hero__title{
-    line-height:1.2;
+    padding:clamp(2rem, 6vw, 3rem) 0 clamp(3rem, 8vw, 4rem);
   }
   .footer-hero__line{
-    font-size:clamp(1.6rem, 6vw, 2rem);
+    font-size:clamp(2.2rem, 9vw, 3rem);
   }
   .footer-hero__line--large{
-    font-size:clamp(1.6rem, 6vw, 2rem);
+    font-size:clamp(2.8rem, 12vw, 4rem);
+    margin-left:0;
+  }
+  .footer-hero__line--accent{
+    margin-left:0;
   }
   .footer-nav{
     grid-template-columns:1fr;
