@@ -414,12 +414,12 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
 .anchor-target{ position:relative; top:-140px; height:0; pointer-events:none; }
 
 /* Sections */
-.section{ padding:clamp(4rem, 8vw + 2rem, 8rem) 0; }
+.section{ padding:clamp(2.5rem, 4vw + 1rem, 5rem) 0; }
 .section.alt{
   background:linear-gradient(135deg, #f5f5f5 0%, #f8f8f8 55%, #fcfcfc 100%);
 }
 .section-title{
-  margin:0 0 1.5rem 0;
+  margin:0 0 1rem 0;
   font-size:clamp(1.4rem, 2.3vw + .45rem, 1.9rem);
   font-weight:600;
   letter-spacing:-.008em;
@@ -469,8 +469,8 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
 .hero-slide__overlay{
   position:absolute;
   inset:0;
-  padding-block:clamp(3rem, 8vh, 6rem);
-  padding-block-start:clamp(5rem, 12vh, 9rem);
+  padding-block:clamp(2.4rem, 6vw, 5.6rem);
+  padding-block-start:clamp(4rem, 9vw, 7.8rem);
   display:flex;
   align-items:center;
   justify-content:flex-start;
@@ -482,7 +482,7 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
   background:rgba(14,14,15,.48);
   border:1px solid rgba(255,255,255,.12);
   border-radius:18px;
-  padding:clamp(1.8rem, 2.5vw + 1rem, 3rem);
+  padding:clamp(1.2rem, 1.6vw + .9rem, 2.2rem);
   box-shadow:0 16px 36px rgba(5,12,9,.18);
   backdrop-filter:blur(4px);
   -webkit-backdrop-filter:blur(4px);
@@ -655,17 +655,7 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
   .quick-stats li::before{ display:none; }
 }
 @media (max-width:640px){
-  .hero-slider{
-    height:100vh;
-    min-height:600px;
-  }
-  .hero-slide__overlay{
-    padding-block:clamp(2rem, 6vh, 4rem);
-    padding-block-start:clamp(4rem, 10vh, 6rem);
-  }
-  .hero-card{
-    padding:clamp(1.5rem, 4vw, 2rem);
-  }
+  .hero-slider{ min-height:580px; }
   .hero-control{
     width:2.4rem;
     height:2.4rem;
@@ -1599,80 +1589,8 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
   border-radius:10px;
   box-shadow:var(--shadow);
 }
-/* Modern Scroll Animations */
-[data-reveal]{
-  opacity:0;
-  transform:translateY(40px);
-  transition:opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-             transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-[data-reveal].in{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* Slide in from left */
-[data-reveal-left]{
-  opacity:0;
-  transform:translateX(-60px);
-  transition:opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-             transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-}
-[data-reveal-left].in{
-  opacity:1;
-  transform:translateX(0);
-}
-
-/* Slide in from right */
-[data-reveal-right]{
-  opacity:0;
-  transform:translateX(60px);
-  transition:opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-             transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-}
-[data-reveal-right].in{
-  opacity:1;
-  transform:translateX(0);
-}
-
-/* Scale up animation */
-[data-reveal-scale]{
-  opacity:0;
-  transform:scale(0.92);
-  transition:opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-             transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-[data-reveal-scale].in{
-  opacity:1;
-  transform:scale(1);
-}
-
-/* Stagger children animations */
-[data-reveal-stagger] > *{
-  opacity:0;
-  transform:translateY(30px);
-  transition:opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-             transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-[data-reveal-stagger].in > *:nth-child(1){ transition-delay:0.1s; }
-[data-reveal-stagger].in > *:nth-child(2){ transition-delay:0.2s; }
-[data-reveal-stagger].in > *:nth-child(3){ transition-delay:0.3s; }
-[data-reveal-stagger].in > *:nth-child(4){ transition-delay:0.4s; }
-[data-reveal-stagger].in > *:nth-child(5){ transition-delay:0.5s; }
-[data-reveal-stagger].in > *:nth-child(6){ transition-delay:0.6s; }
-[data-reveal-stagger].in > *{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* Fade in only */
-[data-reveal-fade]{
-  opacity:0;
-  transition:opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-[data-reveal-fade].in{
-  opacity:1;
-}
+[data-reveal]{ opacity:0; transform:translateY(12px); transition:.6s ease; }
+[data-reveal].in{ opacity:1; transform:none; }
 
 /* CTA band */
 .cta-band{ text-align:center; }
