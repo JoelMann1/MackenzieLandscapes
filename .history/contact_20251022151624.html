@@ -133,17 +133,17 @@
 </div>
 <main id="content">
 
-<section class="page-hero page-hero--contact">
+<section class="page-hero">
   <div class="container narrow">
-    <p class="eyebrow eyebrow--sage">Contact the studio</p>
-    <h1 class="section-title section-title--display">Let&rsquo;s shape your next landscape</h1>
-    <p class="page-hero__lede">Share a little about your site, desired scope and programme. The team will reply within one business day to arrange a call or studio visit.</p>
+    <p class="eyebrow">Contact Mackenzie Landscapes</p>
+    <h1>Start a project</h1>
+    <p>Tell us about your space &mdash; we&rsquo;ll reply within one business day.</p>
   </div>
 </section><div id="header-sentinel" aria-hidden="true"></div>
 
-<section class="section section--contact">
-  <div class="container contact">
-    <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+<section class="section">
+  <div class="container split contact">
+    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
       <div class="field">
         <label for="name">Name</label>
         <input id="name" name="name" type="text" required placeholder="Jane Doe" autocomplete="name">
@@ -160,56 +160,37 @@
         <small class="error" data-for="phone"></small>
       </div>
       <div class="field">
-        <label for="location">Location / Postcode</label>
+        <label for="location">Location/Postcode</label>
         <input id="location" name="location" type="text" required placeholder="SW11, Kensington, etc." autocomplete="postal-code">
         <small class="error" data-for="location"></small>
       </div>
       <div class="field">
-        <label for="services">Service focus</label>
-        <input id="services" name="services" type="text" required placeholder="Design, build, maintenance&hellip;">
+        <label for="services">Service(s)</label>
+        <input id="services" name="services" type="text" required placeholder="Design, build, maintenance">
         <small class="error" data-for="services"></small>
       </div>
       <div class="field">
-        <label for="message">Project outline</label>
-        <textarea id="message" name="message" rows="6" required placeholder="What outcome are you seeking? Any timelines we should be aware of?"></textarea>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required placeholder="What would you like to achieve?"></textarea>
         <small class="error" data-for="message"></small>
       </div>
       <div class="field inline">
-        <label class="checkbox"><input type="checkbox" name="consent" required> I agree you can store and process my details to respond.</label>
+        <label class="checkbox"><input type="checkbox" name="consent" required> I agree to you storing my details to reply.</label>
       </div>
       <input type="hidden" name="_subject" value="New enquiry from Mackenzie Landscapes site">
-      <div class="contact-form__actions">
-        <button class="btn btn--primary" type="submit">Send enquiry</button>
-        <span class="contact-form__alt">or email <a href="mailto:hello@mackenzielandscapes.co.uk">hello@mackenzielandscapes.co.uk</a></span>
-      </div>
+      <button class="btn btn--primary" type="submit">Send message</button>
+      <p class="small">You can also email us at <a href="mailto:hello@mackenzielandscapes.co.uk">hello@mackenzielandscapes.co.uk</a>.</p>
       <p class="form-status" role="status" aria-live="polite"></p>
     </form>
     <aside class="contact-aside">
-      <div class="contact-aside__card">
-        <h2>Studio details</h2>
-        <ul class="contact-aside__list">
-          <li>
-            <span class="contact-aside__label">Service area</span>
-            <span>Central &amp; South West London, projects across Greater London</span>
-          </li>
-          <li>
-            <span class="contact-aside__label">Phone</span>
-            <a href="tel:+442012345678">+44 20 1234 5678</a>
-          </li>
-          <li>
-            <span class="contact-aside__label">Email</span>
-            <a href="mailto:hello@mackenzielandscapes.co.uk">hello@mackenzielandscapes.co.uk</a>
-          </li>
-          <li>
-            <span class="contact-aside__label">Hours</span>
-            <span>Mon–Fri 09:00–17:00</span>
-          </li>
-        </ul>
+      <h2>Our details</h2>
+      <p><strong>Service area:</strong> Central &amp; South West London; projects across Greater London.</p>
+      <p><strong>Phone:</strong> <a href="tel:+442012345678">+44 20 1234 5678</a></p>
+      <p><strong>Email:</strong> <a href="mailto:hello@mackenzielandscapes.co.uk">hello@mackenzielandscapes.co.uk</a></p>
+      <div class="map-embed">
+        <img src="assets/img/IMG-4079-768x1024.jpg" alt="Mackenzie Landscapes project location with landscaped walkway">
       </div>
-      <div class="contact-aside__card contact-aside__card--map">
-        <img src="assets/img/IMG-4079-768x1024.jpg" alt="Layered London garden with seating terrace at dusk">
-      </div>
-      <p class="contact-aside__small">We only use your information to respond to enquiries. <a href="#">View our privacy policy</a>.</p>
+      <p class="small">By sending this form you consent to us contacting you about your enquiry. Replace this text with your privacy notice link.</p>
     </aside>
   </div>
 </section>
