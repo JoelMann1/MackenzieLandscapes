@@ -22,13 +22,48 @@
   <div class="nav-inner">
     <a class="logo" href="index.html" aria-label="Mackenzie Landscapes home">
       <svg aria-hidden="true" viewBox="0 0 64 64"><use href="assets/img/favicon.svg#leaf"/></svg>
-      <span>Mackenzie Landscapes</span>
+      <span class="visually-hidden">Mackenzie Landscapes</span>
     </a>
     <nav class="primary-nav" aria-label="Primary">
       <ul class="menu" role="menubar">
         <li class="menu-item"><a role="menuitem" href="index.html">Home</a></li>
         <li class="menu-item"><a role="menuitem" href="about.html">About</a></li>
-        <li class="menu-item"><a role="menuitem" href="gallery.html">Gallery</a></li>
+        <li class="menu-item has-panel" data-menu="services">
+          <button class="menu-trigger" type="button" aria-expanded="false" aria-controls="panel-services" role="menuitem">
+            Services
+          </button>
+          <div id="panel-services" class="menu-panel" role="menu" hidden>
+            <div class="panel-col" role="none">
+              <span class="panel-heading">Design &amp; Planning</span>
+              <a role="menuitem" href="concept-and-design.html">Concept &amp; Design</a>
+              <a role="menuitem" href="softscaping.html">Softscaping</a>
+            </div>
+            <div class="panel-col" role="none">
+              <span class="panel-heading">Build &amp; Care</span>
+              <a role="menuitem" href="hardscaping.html">Hardscaping</a>
+              <a role="menuitem" href="tree-care.html">Tree Care</a>
+              <a role="menuitem" href="commercial.html">Commercial</a>
+              <a role="menuitem" href="maintenance.html">Maintenance</a>
+            </div>
+          </div>
+        </li>
+        <li class="menu-item has-panel" data-menu="projects">
+          <button class="menu-trigger" type="button" aria-expanded="false" aria-controls="panel-projects" role="menuitem">
+            Projects
+          </button>
+          <div id="panel-projects" class="menu-panel" role="menu" hidden>
+            <div class="panel-col" role="none">
+              <span class="panel-heading">Featured</span>
+              <a role="menuitem" href="gallery.html">Gallery Overview</a>
+              <a role="menuitem" href="gallery.html#lighting">Lighting &amp; ambience</a>
+            </div>
+            <div class="panel-col" role="none">
+              <span class="panel-heading">Details</span>
+              <a role="menuitem" href="gallery.html#hardscape">Hardscape detailing</a>
+              <a role="menuitem" href="gallery.html#planting">Planting inspiration</a>
+            </div>
+          </div>
+        </li>
         <li class="menu-item"><a role="menuitem" href="pricing.html">Pricing</a></li>
       </ul>
     </nav>
@@ -100,7 +135,9 @@
 
 <section class="page-hero page-hero--contact page-hero--dark">
   <div class="container narrow">
+    <p class="eyebrow eyebrow--light">Contact the studio</p>
     <h1 class="section-title section-title--display">Let&rsquo;s shape your next outdoor chapter</h1>
+    <p class="page-hero__lede">Share a little about your site, desired scope and programme. The team will reply within one business day to arrange a call or studio visit.</p>
   </div>
 </section><div id="header-sentinel" aria-hidden="true"></div>
 
@@ -127,17 +164,17 @@
         <input id="location" name="location" type="text" required placeholder="SW11, Kensington, etc." autocomplete="postal-code">
         <small class="error" data-for="location"></small>
       </div>
-      <div class="field field--full">
+      <div class="field">
         <label for="services">Service focus</label>
         <input id="services" name="services" type="text" required placeholder="Design, build, maintenance&hellip;">
         <small class="error" data-for="services"></small>
       </div>
-      <div class="field field--full">
+      <div class="field">
         <label for="message">Project outline</label>
         <textarea id="message" name="message" rows="6" required placeholder="What outcome are you seeking? Any timelines we should be aware of?"></textarea>
         <small class="error" data-for="message"></small>
       </div>
-      <div class="field field--checkbox field--full">
+      <div class="field field--checkbox">
         <label class="checkbox-label">
           <input type="checkbox" name="consent" required class="checkbox-input">
           <span class="checkbox-custom"></span>
@@ -147,7 +184,7 @@
       </div>
       <input type="hidden" name="_subject" value="New enquiry from Mackenzie Landscapes site">
       <div class="contact-form__actions">
-        <button class="btn btn--outline-light" type="submit">Send enquiry</button>
+        <button class="btn btn--primary" type="submit">Send enquiry</button>
         <span class="contact-form__alt">or email <a href="mailto:hello@mackenzielandscapes.co.uk">hello@mackenzielandscapes.co.uk</a></span>
       </div>
       <p class="form-status" role="status" aria-live="polite"></p>
@@ -158,19 +195,14 @@
 </main>
 <footer class="site-footer">
   <div class="container">
-    <div class="footer-hero footer-hero--with-image">
-      <div class="footer-hero__content">
-        <h2 class="footer-hero__title">
-          <span class="footer-hero__line" data-footer-line>Let's create</span>
-          <span class="footer-hero__line footer-hero__line--large" data-footer-line>something</span>
-          <span class="footer-hero__line footer-hero__line--accent" data-footer-line>extraordinary</span>
-        </h2>
-        <div class="footer-hero__cta" data-footer-fade>
-          <a href="contact.html" class="footer-cta-btn">Start a project</a>
-        </div>
-      </div>
-      <div class="footer-hero__image" data-footer-fade>
-        <img src="assets/img/Racket-Town-Cottage-Tresco-42.jpg" alt="Mackenzie Landscapes project">
+    <div class="footer-hero">
+      <h2 class="footer-hero__title">
+        <span class="footer-hero__line" data-footer-line>Let's create</span>
+        <span class="footer-hero__line footer-hero__line--large" data-footer-line>something</span>
+        <span class="footer-hero__line footer-hero__line--accent" data-footer-line>extraordinary</span>
+      </h2>
+      <div class="footer-hero__cta" data-footer-fade>
+        <a href="contact.html" class="footer-cta-btn">Start a project</a>
       </div>
     </div>
 

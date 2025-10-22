@@ -22,13 +22,48 @@
   <div class="nav-inner">
     <a class="logo" href="index.html" aria-label="Mackenzie Landscapes home">
       <svg aria-hidden="true" viewBox="0 0 64 64"><use href="assets/img/favicon.svg#leaf"/></svg>
-      <span>Mackenzie Landscapes</span>
+      <span class="visually-hidden">Mackenzie Landscapes</span>
     </a>
     <nav class="primary-nav" aria-label="Primary">
       <ul class="menu" role="menubar">
         <li class="menu-item"><a role="menuitem" href="index.html">Home</a></li>
         <li class="menu-item"><a role="menuitem" href="about.html">About</a></li>
-        <li class="menu-item"><a role="menuitem" href="gallery.html">Gallery</a></li>
+        <li class="menu-item has-panel" data-menu="services">
+          <button class="menu-trigger" type="button" aria-expanded="false" aria-controls="panel-services" role="menuitem">
+            Services
+          </button>
+          <div id="panel-services" class="menu-panel" role="menu" hidden>
+            <div class="panel-col" role="none">
+              <span class="panel-heading">Design &amp; Planning</span>
+              <a role="menuitem" href="concept-and-design.html">Concept &amp; Design</a>
+              <a role="menuitem" href="softscaping.html">Softscaping</a>
+            </div>
+            <div class="panel-col" role="none">
+              <span class="panel-heading">Build &amp; Care</span>
+              <a role="menuitem" href="hardscaping.html">Hardscaping</a>
+              <a role="menuitem" href="tree-care.html">Tree Care</a>
+              <a role="menuitem" href="commercial.html">Commercial</a>
+              <a role="menuitem" href="maintenance.html">Maintenance</a>
+            </div>
+          </div>
+        </li>
+        <li class="menu-item has-panel" data-menu="projects">
+          <button class="menu-trigger" type="button" aria-expanded="false" aria-controls="panel-projects" role="menuitem">
+            Projects
+          </button>
+          <div id="panel-projects" class="menu-panel" role="menu" hidden>
+            <div class="panel-col" role="none">
+              <span class="panel-heading">Featured</span>
+              <a role="menuitem" href="gallery.html">Gallery Overview</a>
+              <a role="menuitem" href="gallery.html#lighting">Lighting &amp; ambience</a>
+            </div>
+            <div class="panel-col" role="none">
+              <span class="panel-heading">Details</span>
+              <a role="menuitem" href="gallery.html#hardscape">Hardscape detailing</a>
+              <a role="menuitem" href="gallery.html#planting">Planting inspiration</a>
+            </div>
+          </div>
+        </li>
         <li class="menu-item"><a role="menuitem" href="pricing.html">Pricing</a></li>
       </ul>
     </nav>
@@ -108,7 +143,7 @@
       </div>
     </div>
     <div data-reveal>
-      <h2 class="section-title section-title--display">Our Story</h2>
+      <h2 class="section-title">Our Story</h2>
       <p>Mackenzie Landscapes was founded on a deep connection to the outdoors, shaped by a New Zealand upbringing surrounded by natural beauty and hands-on garden-making. From early on, our founder understood that exceptional landscape design is about more than plants and paving&mdash;it's about atmosphere, purpose, and flow.</p>
       <p>After working with high-end landscaping teams across New Zealand, the UK, and further abroad, and studying landscape architecture, we brought that global experience and design-led approach to London. Today, we serve Central, South West, and Greater London with a commitment to meticulous craftsmanship, creativity, and care.</p>
       <p>Our approach to landscape design is guided by the relationship between structure and softness&mdash;the clean lines of built forms paired with the natural flow of planting. Inspired by the balance between order and organic movement, where defined geometry meets layered, seasonal borders.</p>
@@ -121,7 +156,7 @@
 <section class="section section--values">
   <div class="container values">
     <div class="values__intro" data-reveal>
-      <h2 class="section-title section-title--display">What We Stand For</h2>
+      <h2 class="section-title">What We Stand For</h2>
       <p>Our design philosophy is rooted in the relationship between structure and softness, where built forms and natural planting create spaces that feel both intentional and alive.</p>
     </div>
     <div class="values__cards" data-reveal>
@@ -162,6 +197,24 @@
 
 
 
+
+<section class="section alt">
+  <div class="container">
+    <div class="cta-section" data-reveal>
+      <div class="cta-section__content">
+        <h2 class="section-title">Let&rsquo;s Get Started</h2>
+        <p>If you are ready to transform your outdoor living, connect with us for a consultation. Together we will create a garden designed for you, built to last and maintained for life.</p>
+        <div class="cta-section__actions">
+          <a class="btn btn--primary" href="contact.html">Book a consultation</a>
+          <a class="btn btn--secondary" href="tel:+442012345678"><span data-alt="Call the studio">Call the studio</span></a>
+        </div>
+      </div>
+      <figure class="cta-section__image" data-reveal>
+        <img src="assets/img/IMG_7538-768x386.jpeg" alt="Beautiful garden space ready for consultation">
+      </figure>
+    </div>
+  </div>
+</section>
 
 </main>
 <footer class="site-footer">
