@@ -1242,32 +1242,6 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
   }
 }
 
-/* Blue-Tinted Hero Section */
-.section--blue-hero{
-  padding:0;
-  background:#1a1a1a;
-  overflow:hidden;
-}
-
-.blue-hero__image{
-  width:100%;
-  height:clamp(300px, 40vh, 500px);
-  background-image:url('../img/Racket-Town-Cottage-Tresco-2025-27.jpg');
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  position:relative;
-}
-
-.blue-hero__image::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background-color:rgba(14, 87, 250, 0.8);
-  mix-blend-mode:multiply;
-  pointer-events:none;
-}
-
 /* Services Accordion */
 .section--services-accordion{
   background:#1a1a1a;
