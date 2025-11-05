@@ -565,44 +565,8 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
   .section h3,
   .section h4,
   .section h5,
-  .section h6,
-  .section-subtitle,
-  .section li,
-  .about-preview__header,
-  .about-preview__header-divider,
-  .about-preview__header-tagline,
-  .about-preview__copy .section-title,
-  .about-preview__copy p,
-  .about-preview__list,
-  .services-header,
-  .services-header__divider,
-  .services-header__tagline,
-  .services-header .section-title,
-  .testimonials-header,
-  .testimonials-header__divider,
-  .testimonials-header__tagline,
-  .testimonials-header .section-title,
-  .section--dream-garden .section-title,
-  .section--dream-garden .section-subtitle,
-  .dream-garden-header,
-  .dream-garden-header__divider,
-  .dream-garden-header__tagline{
-    text-align:center !important;
-  }
-
-  /* Center dividers on mobile */
-  .about-preview__header-divider,
-  .services-header__divider,
-  .testimonials-header__divider,
-  .dream-garden-header__divider{
-    margin-left:auto !important;
-    margin-right:auto !important;
-  }
-
-  /* Center buttons on mobile */
-  .about-preview__actions{
-    justify-content:center !important;
-    align-items:center !important;
+  .section h6{
+    text-align:center;
   }
   .about-preview__list,
   .process__intro p{
