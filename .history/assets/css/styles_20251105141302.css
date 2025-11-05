@@ -3699,11 +3699,6 @@ html{
 .testimonials-header .section-title{
   text-align:left;
   margin:0;
-  font-size:clamp(2rem, 4vw + .5rem, 3.5rem);
-  font-weight:500;
-  line-height:1.15;
-  letter-spacing:-.02em;
-  color:#fffcf5;
 }
 
 .testimonials-slider__header{
