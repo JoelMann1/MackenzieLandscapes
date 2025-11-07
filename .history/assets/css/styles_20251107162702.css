@@ -912,7 +912,7 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
     width:100%;
   }
   .hero-card h1{
-    font-size:clamp(2rem, 7.5vw, 2.6rem);
+    font-size:clamp(1.6rem, 6.5vw, 2.2rem);
     line-height:1.2;
     margin:.4rem 0 .8rem;
   }
@@ -3683,14 +3683,6 @@ html{
 .testimonial-slider{
   width:100%;
   position:relative;
-  overflow-x:auto;
-  overflow-y:hidden;
-  scrollbar-width:none;
-  -ms-overflow-style:none;
-}
-
-.testimonial-slider::-webkit-scrollbar{
-  display:none;
 }
 
 .testimonial-slider__track{
@@ -3698,19 +3690,10 @@ html{
   gap:clamp(1.5rem, 3vw, 2.5rem);
   animation:scroll-testimonials 60s linear infinite;
   will-change:transform;
-  cursor:grab;
-  user-select:none;
-  -webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
 }
 
 .testimonial-slider__track:hover{
   animation-play-state:paused;
-}
-
-.testimonial-slider__track:active{
-  cursor:grabbing;
 }
 
 @keyframes scroll-testimonials{

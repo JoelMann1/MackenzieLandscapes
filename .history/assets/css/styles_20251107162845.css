@@ -3683,14 +3683,6 @@ html{
 .testimonial-slider{
   width:100%;
   position:relative;
-  overflow-x:auto;
-  overflow-y:hidden;
-  scrollbar-width:none;
-  -ms-overflow-style:none;
-}
-
-.testimonial-slider::-webkit-scrollbar{
-  display:none;
 }
 
 .testimonial-slider__track{
