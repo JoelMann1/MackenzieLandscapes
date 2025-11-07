@@ -602,10 +602,7 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
 }
 .section-title{
   margin:0 0 1.5rem 0;
-  font-size:clamp(2rem, 4vw + .5rem, 3.5rem);
-  font-weight:500;
-  line-height:1.15;
-  letter-spacing:-.02em;
+  /* Inherits from h4 base styles */
 }
 
 /* Mobile-first: center text on small screens */
@@ -2514,35 +2511,12 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
   color:#0B1411;
   box-shadow:none;
   text-decoration:none;
-  gap:.5rem;
-}
-.footer-cta-btn::before{
-  content:'';
-  position:absolute;
-  top:0;
-  left:-100%;
-  width:100%;
-  height:100%;
-  background:#0B1411;
-  transition:left .5s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index:-1;
-}
-.footer-cta-btn:hover::before{
-  left:0;
 }
 .footer-cta-btn:hover{
-  color:#ffffff;
-  border-color:#0B1411;
+  background:#f5f5f5;
+  border-color:#f5f5f5;
+  color:#0B1411;
   transform:translateY(-1px);
-}
-.footer-cta-btn::after{
-  content:'→';
-  font-size:1.1em;
-  transition:transform .3s cubic-bezier(0.4, 0, 0.2, 1);
-  display:inline-block;
-}
-.footer-cta-btn:hover::after{
-  transform:translateX(4px);
 }
 @keyframes footerFadeIn{
   to{
@@ -3210,7 +3184,7 @@ html{
 .section-title--display{
   /* Uses h2 sizing for prominence */
   font-size:clamp(2rem, 4vw + .5rem, 3.5rem);
-  font-weight:500;
+  font-weight:600;
   line-height:1.15;
   letter-spacing:-.02em;
   color:#ffffff;

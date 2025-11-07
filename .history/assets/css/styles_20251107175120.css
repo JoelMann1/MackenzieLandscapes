@@ -3210,7 +3210,7 @@ html{
 .section-title--display{
   /* Uses h2 sizing for prominence */
   font-size:clamp(2rem, 4vw + .5rem, 3.5rem);
-  font-weight:500;
+  font-weight:600;
   line-height:1.15;
   letter-spacing:-.02em;
   color:#ffffff;
