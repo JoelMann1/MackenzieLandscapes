@@ -19,20 +19,37 @@
 
     try {
       const lenis = new Lenis({
-        lerp: prefersReducedMotion ? 1 : 0.06,  // Lower = more inertia/smoothness (0.06 is VERY cinematic)
-        duration: prefersReducedMotion ? 0.8 : 1.5,  // How long scroll animations take
+        lerp: prefersReducedMotion ? 1 : 0.1,  // Increased from 0.06 for better performance (less lag)
+        duration: prefersReducedMotion ? 0.8 : 1.2,  // Reduced from 1.5 for snappier feel
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),  // Smooth easing curve
         orientation: 'vertical',
         gestureOrientation: 'vertical',
         smooth: !prefersReducedMotion,  // Disable if user prefers reduced motion
-        wheelMultiplier: prefersReducedMotion ? 1.0 : 0.5,  // Lower = smaller distance per scroll (more cinematic)
+        wheelMultiplier: prefersReducedMotion ? 1.0 : 0.8,  // Increased from 0.5 for less lag
         touchMultiplier: prefersReducedMotion ? 1.0 : 1.5,  // Touch scroll sensitivity
         smoothTouch: false,  // Keep native touch scrolling on mobile
         infinite: false,
         autoResize: true,
+        syncTouch: true,  // Better touch performance
       });
 
+      // Optimize RAF for gallery page - reduce update frequency
+      const isGalleryPage = window.location.pathname.includes('gallery');
+      let lastTime = 0;
+      const targetFPS = isGalleryPage ? 30 : 60;  // Lower FPS on gallery for better performance
+      const frameInterval = 1000 / targetFPS;
+
       function raf(time) {
+        // Throttle updates on gallery page
+        if(isGalleryPage){
+          const elapsed = time - lastTime;
+          if(elapsed < frameInterval){
+            requestAnimationFrame(raf);
+            return;
+          }
+          lastTime = time - (elapsed % frameInterval);
+        }
+
         lenis.raf(time);
         requestAnimationFrame(raf);
       }
@@ -805,5 +822,65 @@
   track.addEventListener('touchend', () => {
     track.style.animationPlayState = 'running';
   }, { passive: true });
+})();
+
+// Gallery Performance Optimization
+(function(){
+  const galleryGrid = document.querySelector('.gallery-grid');
+  if(!galleryGrid) return;
+
+  // Optimize image loading with Intersection Observer
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const img = entry.target;
+
+        // Add loaded class for fade-in effect
+        img.addEventListener('load', () => {
+          img.style.opacity = '1';
+        }, { once: true });
+
+        // Start loading
+        if(img.dataset.src){
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+
+        observer.unobserve(img);
+      }
+    });
+  }, {
+    rootMargin: '50px 0px',  // Start loading slightly before visible
+    threshold: 0.01
+  });
+
+  // Observe all gallery images
+  const images = galleryGrid.querySelectorAll('img');
+  images.forEach(img => {
+    // Set initial opacity for fade-in
+    img.style.opacity = '0';
+    img.style.transition = 'opacity 0.3s ease-in-out';
+
+    imageObserver.observe(img);
+  });
+
+  // Pause Lenis during rapid scrolling for better performance
+  let scrollTimeout;
+  let isScrolling = false;
+
+  window.addEventListener('scroll', () => {
+    if(!isScrolling){
+      isScrolling = true;
+      galleryGrid.style.pointerEvents = 'none';  // Disable hover during scroll
+    }
+
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      isScrolling = false;
+      galleryGrid.style.pointerEvents = 'auto';  // Re-enable hover
+    }, 150);
+  }, { passive: true });
+
+  console.log('🖼️ Gallery performance optimizations applied');
 })();
 

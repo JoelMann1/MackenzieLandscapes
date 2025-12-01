@@ -1,2 +1,13 @@
+# Mackenzie Landscapes - Robots.txt
+# Allow all search engines to crawl the site
+
 User-agent: *
-Disallow:
+Disallow: /assets/js/
+Disallow: /assets/css/
+Allow: /assets/img/
+
+# Sitemap location
+Sitemap: https://mackenzielandscapes.uk/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
