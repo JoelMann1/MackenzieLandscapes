@@ -1,6 +1,15 @@
 ﻿
 // Smooth Scroll with Lenis
 (function(){
+  // DISABLE LENIS ON GALLERY PAGE - causes extreme lag with many images
+  const isGalleryPage = window.location.pathname.includes('gallery');
+
+  if(isGalleryPage){
+    console.log('📸 Gallery page detected - Lenis disabled for performance');
+    // Use native scroll on gallery page
+    return;
+  }
+
   // Wait for Lenis to be available
   function initLenis() {
     if(typeof Lenis === 'undefined'){
@@ -33,23 +42,7 @@
         syncTouch: true,  // Better touch performance
       });
 
-      // Optimize RAF for gallery page - reduce update frequency
-      const isGalleryPage = window.location.pathname.includes('gallery');
-      let lastTime = 0;
-      const targetFPS = isGalleryPage ? 30 : 60;  // Lower FPS on gallery for better performance
-      const frameInterval = 1000 / targetFPS;
-
       function raf(time) {
-        // Throttle updates on gallery page
-        if(isGalleryPage){
-          const elapsed = time - lastTime;
-          if(elapsed < frameInterval){
-            requestAnimationFrame(raf);
-            return;
-          }
-          lastTime = time - (elapsed % frameInterval);
-        }
-
         lenis.raf(time);
         requestAnimationFrame(raf);
       }
@@ -76,8 +69,8 @@
       // Expose lenis globally for debugging
       window.lenis = lenis;
       console.log('🎬 Lenis initialized with cinematic config:', {
-        lerp: 0.06,
-        wheelMultiplier: 0.5,
+        lerp: 0.1,
+        wheelMultiplier: 0.8,
         smooth: !prefersReducedMotion
       });
     } catch(error) {
@@ -479,33 +472,92 @@
       const status = form.querySelector('.form-status');
       status.textContent = '';
       let ok = true;
+
+      // Get all form fields
       const name = form.querySelector('#name');
       const email = form.querySelector('#email');
+      const phone = form.querySelector('#phone');
+      const location = form.querySelector('#location');
+      const services = form.querySelector('#services');
       const message = form.querySelector('#message');
-      const errs = {name:'', email:'', message:''};
+      const consent = form.querySelector('[name="consent"]');
 
-      if(!name.value.trim()){ errs.name = 'Please enter your name.'; ok = false; }
-      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)){ errs.email = 'Please enter a valid email.'; ok = false; }
-      if(!message.value.trim()){ errs.message = 'Please enter a message.'; ok = false; }
+      const errs = {name:'', email:'', phone:'', location:'', services:'', message:'', consent:''};
 
-      ['name','email','message'].forEach(id => {
+      // Validate all required fields
+      if(!name.value.trim()){
+        errs.name = 'Please enter your name.';
+        ok = false;
+      }
+
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)){
+        errs.email = 'Please enter a valid email.';
+        ok = false;
+      }
+
+      if(!phone.value.trim()){
+        errs.phone = 'Please enter your phone number.';
+        ok = false;
+      }
+
+      if(!location.value.trim()){
+        errs.location = 'Please enter your location or postcode.';
+        ok = false;
+      }
+
+      if(!services.value.trim()){
+        errs.services = 'Please tell us what services you need.';
+        ok = false;
+      }
+
+      if(!message.value.trim()){
+        errs.message = 'Please enter a message.';
+        ok = false;
+      }
+
+      if(!consent.checked){
+        errs.consent = 'Please agree to our data processing terms.';
+        ok = false;
+      }
+
+      // Display all errors
+      ['name','email','phone','location','services','message','consent'].forEach(id => {
         const errEl = form.querySelector(`[data-for="${id}"]`);
         if(errEl) errEl.textContent = errs[id];
       });
-      if(!ok){ return; }
 
+      if(!ok){
+        status.textContent = 'Please fix the errors above.';
+        status.style.color = '#ff6b6b';
+        return;
+      }
+
+      // Submit form
       const endpoint = form.getAttribute('action');
       const formData = new FormData(form);
+
+      // Show loading state
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+
       try{
         const res = await fetch(endpoint, { method:'POST', body: formData, headers: { 'Accept': 'application/json' } });
         if(res.ok){
           status.textContent = "Thanks — we'll be in touch shortly.";
+          status.style.color = '#4ade80';
           form.reset();
         } else {
           status.textContent = 'Sorry, something went wrong. Please email us directly.';
+          status.style.color = '#ff6b6b';
         }
       }catch(err){
         status.textContent = 'Network error. Please try again or email us directly.';
+        status.style.color = '#ff6b6b';
+      } finally {
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
       }
     });
   }
@@ -824,63 +876,140 @@
   }, { passive: true });
 })();
 
-// Gallery Performance Optimization
+// Gallery Performance Optimization - ULTRA aggressive for maximum performance
 (function(){
   const galleryGrid = document.querySelector('.gallery-grid');
   if(!galleryGrid) return;
 
-  // Optimize image loading with Intersection Observer
-  const imageObserver = new IntersectionObserver((entries, observer) => {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const images = galleryGrid.querySelectorAll('img');
+
+  console.log(`📸 Gallery: ${images.length} images, Mobile: ${isMobile}`);
+
+  // Track loaded images
+  let loadedCount = 0;
+  const totalImages = images.length;
+  let isScrolling = false;
+  let scrollTimeout;
+
+  // ULTRA AGGRESSIVE: Only load first 2 images immediately
+  images.forEach((img, index) => {
+    const currentSrc = img.getAttribute('src');
+
+    if(index < 2){
+      img.style.opacity = '1';
+      img.classList.add('loaded');
+      loadedCount++;
+      console.log(`✅ Image ${index + 1} loaded immediately`);
+      return;
+    }
+
+    // Store original src and remove it
+    img.setAttribute('data-src', currentSrc);
+    img.removeAttribute('src');
+    img.style.opacity = '0';
+    img.style.transition = 'opacity 0.3s ease-in-out';
+    img.style.backgroundColor = 'rgba(255,255,255,0.05)';
+
+    // Add loading attribute
+    img.loading = 'lazy';
+  });
+
+  // Throttle image loading during scroll
+  let loadQueue = [];
+  let isLoadingBatch = false;
+
+  function processBatch(){
+    if(isLoadingBatch || loadQueue.length === 0) return;
+
+    isLoadingBatch = true;
+    const img = loadQueue.shift();
+    const dataSrc = img.getAttribute('data-src');
+
+    if(dataSrc && !img.classList.contains('loaded')){
+      img.src = dataSrc;
+      img.removeAttribute('data-src');
+
+      img.onload = () => {
+        img.style.opacity = '1';
+        img.classList.add('loaded');
+        loadedCount++;
+        console.log(`✅ Image loaded (${loadedCount}/${totalImages})`);
+        isLoadingBatch = false;
+
+        // Process next in queue after small delay
+        setTimeout(processBatch, 50);
+      };
+
+      img.onerror = () => {
+        console.error(`❌ Failed to load image`);
+        img.style.opacity = '0.3';
+        isLoadingBatch = false;
+        setTimeout(processBatch, 50);
+      };
+    } else {
+      isLoadingBatch = false;
+      setTimeout(processBatch, 50);
+    }
+  }
+
+  // Intersection Observer with batched loading
+  const imageObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
         const img = entry.target;
 
-        // Add loaded class for fade-in effect
-        img.addEventListener('load', () => {
-          img.style.opacity = '1';
-        }, { once: true });
-
-        // Start loading
-        if(img.dataset.src){
-          img.src = img.dataset.src;
-          img.removeAttribute('data-src');
+        if(img.hasAttribute('data-src') && !img.classList.contains('loaded')){
+          // Add to queue instead of loading immediately
+          if(!loadQueue.includes(img)){
+            loadQueue.push(img);
+          }
+          imageObserver.unobserve(img);
         }
-
-        observer.unobserve(img);
       }
     });
+
+    // Start processing queue
+    if(!isScrolling){
+      processBatch();
+    }
   }, {
-    rootMargin: '50px 0px',  // Start loading slightly before visible
+    // Load only when very close to viewport
+    rootMargin: isMobile ? '100px 0px' : '200px 0px',
     threshold: 0.01
   });
 
-  // Observe all gallery images
-  const images = galleryGrid.querySelectorAll('img');
+  // Start observing all lazy images
   images.forEach(img => {
-    // Set initial opacity for fade-in
-    img.style.opacity = '0';
-    img.style.transition = 'opacity 0.3s ease-in-out';
-
-    imageObserver.observe(img);
+    if(img.hasAttribute('data-src')){
+      imageObserver.observe(img);
+    }
   });
 
-  // Pause Lenis during rapid scrolling for better performance
-  let scrollTimeout;
-  let isScrolling = false;
-
+  // Pause loading during active scrolling
   window.addEventListener('scroll', () => {
-    if(!isScrolling){
-      isScrolling = true;
-      galleryGrid.style.pointerEvents = 'none';  // Disable hover during scroll
-    }
-
+    isScrolling = true;
     clearTimeout(scrollTimeout);
+
     scrollTimeout = setTimeout(() => {
       isScrolling = false;
-      galleryGrid.style.pointerEvents = 'auto';  // Re-enable hover
+      processBatch(); // Resume loading after scroll stops
     }, 150);
   }, { passive: true });
 
-  console.log('🖼️ Gallery performance optimizations applied');
+  // Disable hover effects during scroll for better performance
+  let hoverTimeout;
+  window.addEventListener('scroll', () => {
+    galleryGrid.style.pointerEvents = 'none';
+    clearTimeout(hoverTimeout);
+
+    hoverTimeout = setTimeout(() => {
+      galleryGrid.style.pointerEvents = 'auto';
+    }, 200);
+  }, { passive: true });
+
+  console.log(`✅ Gallery ULTRA optimized - ${loadedCount}/${totalImages} images loaded initially`);
+  console.log('📱 Native scroll enabled (no Lenis on gallery page)');
+  console.log('⚡ Batched loading enabled - images load one at a time');
 })();
 

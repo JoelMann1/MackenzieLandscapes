@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form Test - Mackenzie Landscapes</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: #0a0a0a;
+      color: #fff;
+    }
+    h1 { color: #7B8B47; }
+    .test-section {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .status {
+      padding: 15px;
+      border-radius: 6px;
+      margin: 10px 0;
+    }
+    .status.success {
+      background: #4ade80;
+      color: #000;
+      font-weight: bold;
+    }
+    .status.error {
+      background: #ff6b6b;
+      color: #fff;
+      font-weight: bold;
+    }
+    .status.info {
+      background: #596B3A;
+      color: #fff;
+    }
+    .checklist {
+      list-style: none;
+      padding: 0;
+    }
+    .checklist li {
+      padding: 10px;
+      margin: 5px 0;
+      background: #0f0f0f;
+      border-radius: 4px;
+    }
+    .checklist li::before {
+      content: "✅ ";
+      margin-right: 10px;
+    }
+    code {
+      background: #000;
+      color: #0f0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+    }
+    a {
+      color: #7B8B47;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    button {
+      background: #596B3A;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 5px 10px 0;
+    }
+    button:hover {
+      background: #46562D;
+    }
+  </style>
+</head>
+<body>
+  <h1>✅ Contact Form Setup Complete!</h1>
+  
+  <div class="test-section">
+    <h2>📧 Email Configuration</h2>
+    <div class="status success">
+      ✅ Form connected to: <code>Mackenzielandscapes1@gmail.com</code>
+    </div>
+    <div class="status success">
+      ✅ Formspree endpoint: <code>https://formspree.io/f/meejvraw</code>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>✅ What's Been Updated</h2>
+    <ul class="checklist">
+      <li>Contact form action URL → New Formspree endpoint</li>
+      <li>Email link on contact page → Mackenzielandscapes1@gmail.com</li>
+      <li>Form validation → All 7 fields validated</li>
+      <li>Email subject line → "New enquiry from Mackenzie Landscapes site"</li>
+    </ul>
+  </div>
+
+  <div class="test-section">
+    <h2>🧪 Testing Checklist</h2>
+    <p><strong>Follow these steps to test the contact form:</strong></p>
+    
+    <h3>Step 1: Open Contact Page</h3>
+    <button onclick="window.open('http://localhost:8000/contact.html', '_blank')">
+      🔗 Open Contact Page
+    </button>
+    
+    <h3>Step 2: Test Form Validation</h3>
+    <ol style="line-height: 1.8;">
+      <li>Try submitting the form <strong>empty</strong> → Should show errors for all 7 fields</li>
+      <li>Fill in only name and email → Should show errors for remaining fields</li>
+      <li>Forget to check consent checkbox → Should show error</li>
+    </ol>
+    
+    <h3>Step 3: Test Form Submission</h3>
+    <ol style="line-height: 1.8;">
+      <li>Fill in ALL fields correctly:
+        <ul>
+          <li><strong>Name:</strong> Test User</li>
+          <li><strong>Email:</strong> test@example.com</li>
+          <li><strong>Phone:</strong> +44 77 1234 5678</li>
+          <li><strong>Location:</strong> SW11</li>
+          <li><strong>Service:</strong> Garden Design</li>
+          <li><strong>Message:</strong> This is a test submission</li>
+          <li><strong>Consent:</strong> ✅ Check the box</li>
+        </ul>
+      </li>
+      <li>Click <strong>"Send enquiry"</strong></li>
+      <li>Button should change to <strong>"Sending..."</strong></li>
+      <li>Should show <strong>green success message</strong></li>
+    </ol>
+    
+    <h3>Step 4: Check Gmail Inbox</h3>
+    <ol style="line-height: 1.8;">
+      <li>Open Gmail: <a href="https://mail.google.com" target="_blank">mail.google.com</a></li>
+      <li>Log in with: <code>Mackenzielandscapes1@gmail.com</code></li>
+      <li>Check inbox for email from Formspree</li>
+      <li>Subject should be: <strong>"New enquiry from Mackenzie Landscapes site"</strong></li>
+      <li>Email should contain all form data</li>
+    </ol>
+  </div>
+
+  <div class="test-section">
+    <h2>📋 Form Fields Being Sent</h2>
+    <ul class="checklist">
+      <li><strong>name</strong> - Customer's name</li>
+      <li><strong>email</strong> - Customer's email</li>
+      <li><strong>phone</strong> - Customer's phone number</li>
+      <li><strong>location</strong> - Customer's location/postcode</li>
+      <li><strong>services</strong> - Service focus</li>
+      <li><strong>message</strong> - Project outline</li>
+      <li><strong>consent</strong> - Privacy agreement</li>
+      <li><strong>_subject</strong> - Email subject line</li>
+    </ul>
+  </div>
+
+  <div class="test-section">
+    <h2>⚙️ Formspree Settings (Optional)</h2>
+    <p>You can customize your Formspree form at:</p>
+    <button onclick="window.open('https://formspree.io/forms/meejvraw/settings', '_blank')">
+      🔗 Open Formspree Settings
+    </button>
+    
+    <h3>Recommended Settings:</h3>
+    <ul style="line-height: 1.8;">
+      <li><strong>Email notifications:</strong> ON (default)</li>
+      <li><strong>Spam filtering:</strong> ON (default)</li>
+      <li><strong>Auto-reply:</strong> Optional - send confirmation to customer</li>
+      <li><strong>Redirect after submit:</strong> Optional - redirect to thank you page</li>
+      <li><strong>reCAPTCHA:</strong> Optional - add spam protection</li>
+    </ul>
+  </div>
+
+  <div class="test-section">
+    <h2>🎯 Next Steps</h2>
+    <ol style="line-height: 1.8;">
+      <li>✅ Test the contact form (follow checklist above)</li>
+      <li>✅ Verify email arrives at Gmail inbox</li>
+      <li>✅ Customize Formspree settings (optional)</li>
+      <li>✅ Set up auto-reply message (optional)</li>
+      <li>✅ Deploy website to production</li>
+    </ol>
+  </div>
+
+  <div class="test-section">
+    <h2>📱 Mobile Testing</h2>
+    <p>Don't forget to test on mobile devices:</p>
+    <ul style="line-height: 1.8;">
+      <li>iPhone/iPad - Safari</li>
+      <li>Android - Chrome</li>
+      <li>Check form layout is responsive</li>
+      <li>Check validation messages appear correctly</li>
+      <li>Check keyboard types (email, tel, etc.)</li>
+    </ul>
+  </div>
+
+  <div class="test-section">
+    <h2>🚀 Quick Links</h2>
+    <button onclick="window.open('http://localhost:8000/contact.html', '_blank')">
+      📝 Contact Page
+    </button>
+    <button onclick="window.open('https://formspree.io/forms/meejvraw', '_blank')">
+      📊 Formspree Dashboard
+    </button>
+    <button onclick="window.open('https://mail.google.com', '_blank')">
+      📧 Gmail Inbox
+    </button>
+  </div>
+
+</body>
+</html>
+

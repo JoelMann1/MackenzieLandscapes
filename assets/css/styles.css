@@ -53,6 +53,8 @@
 *{ box-sizing:border-box; }
 html{
   scroll-behavior:auto;
+  /* Smooth native scrolling */
+  -webkit-overflow-scrolling:touch;
 }
 html.lenis {
   height: auto;
@@ -2039,6 +2041,8 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
   will-change:auto;
   /* Prevent layout shift during image loading */
   min-height:100vh;
+  /* Better scrolling performance */
+  overflow:visible;
 }
 .gallery-grid img{
   width:100%;
@@ -2052,23 +2056,21 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
   contain-intrinsic-size:400px 300px;
   /* Prevent layout shift */
   display:block;
-  /* Disable expensive transforms on scroll */
-  transition:opacity .3s ease-in-out, box-shadow .2s ease;
+  /* Minimal transitions for better performance */
+  transition:opacity .2s ease-in-out;
   will-change:auto;
-  /* GPU acceleration for smoother rendering */
-  transform:translateZ(0);
-  backface-visibility:hidden;
-  -webkit-font-smoothing:antialiased;
   /* Placeholder background while loading */
   background:rgba(255,255,255,.05);
+  /* Disable expensive GPU effects */
+  transform:none;
+  backface-visibility:visible;
 }
 /* Only enable hover effects on non-touch devices */
 @media (hover: hover) and (pointer: fine){
   .gallery-grid img{
-    transition:transform .2s ease, box-shadow .2s ease;
+    transition:opacity .2s ease, box-shadow .2s ease;
   }
   .gallery-grid img:hover{
-    transform:scale(1.015) translateZ(0);
     box-shadow:0 8px 24px rgba(38,53,27,.15);
   }
 }
@@ -2083,15 +2085,25 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
     gap:1rem;
     /* Reduce minimum height on mobile */
     min-height:auto;
+    /* Better mobile performance */
+    -webkit-overflow-scrolling:touch;
   }
   .gallery-grid img{
     /* Disable transforms on mobile for better performance */
-    transition:none;
+    transition:none !important;
+    transform:none !important;
     /* Reduce image quality slightly for faster loading on mobile */
     image-rendering:auto;
     /* Prevent layout shift on mobile */
     max-width:100%;
     height:auto;
+    /* Remove expensive effects on mobile */
+    will-change:auto;
+    box-shadow:0 4px 12px rgba(38,53,27,.08);
+  }
+  .gallery-grid img:hover{
+    transform:none !important;
+    box-shadow:0 4px 12px rgba(38,53,27,.08);
   }
 }
 /* Reduce motion for accessibility and performance */
