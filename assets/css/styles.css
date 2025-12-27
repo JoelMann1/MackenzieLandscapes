@@ -2043,6 +2043,10 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
   min-height:100vh;
   /* Better scrolling performance */
   overflow:visible;
+  /* GPU acceleration for grid */
+  transform:translateZ(0);
+  /* Optimize rendering */
+  isolation:isolate;
 }
 .gallery-grid img{
   width:100%;
@@ -2087,12 +2091,16 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
     min-height:auto;
     /* Better mobile performance */
     -webkit-overflow-scrolling:touch;
+    /* Remove GPU acceleration on mobile to save battery */
+    transform:none;
+    /* Optimize for mobile scrolling */
+    overscroll-behavior:contain;
   }
   .gallery-grid img{
     /* Disable transforms on mobile for better performance */
     transition:none !important;
     transform:none !important;
-    /* Reduce image quality slightly for faster loading on mobile */
+    /* Optimize image rendering for mobile */
     image-rendering:auto;
     /* Prevent layout shift on mobile */
     max-width:100%;
@@ -2100,6 +2108,10 @@ a:hover{ text-decoration:none; color:var(--brand-700); }
     /* Remove expensive effects on mobile */
     will-change:auto;
     box-shadow:0 4px 12px rgba(38,53,27,.08);
+    /* Optimize decoding */
+    image-rendering:-webkit-optimize-contrast;
+    /* Prevent tap highlight on mobile */
+    -webkit-tap-highlight-color:transparent;
   }
   .gallery-grid img:hover{
     transform:none !important;

@@ -4,9 +4,18 @@
   // DISABLE LENIS ON GALLERY PAGE - causes extreme lag with many images
   const isGalleryPage = window.location.pathname.includes('gallery');
 
+  // DISABLE LENIS ON MOBILE - use native scroll for better performance
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+
   if(isGalleryPage){
     console.log('📸 Gallery page detected - Lenis disabled for performance');
     // Use native scroll on gallery page
+    return;
+  }
+
+  if(isMobile){
+    console.log('📱 Mobile device detected - Lenis disabled, using native scroll');
+    // Use native scroll on mobile
     return;
   }
 
@@ -876,7 +885,7 @@
   }, { passive: true });
 })();
 
-// Gallery Performance Optimization - ULTRA aggressive for maximum performance
+// Gallery Performance Optimization - Mobile-optimized for faster loading
 (function(){
   const galleryGrid = document.querySelector('.gallery-grid');
   if(!galleryGrid) return;
@@ -892,11 +901,14 @@
   let isScrolling = false;
   let scrollTimeout;
 
-  // ULTRA AGGRESSIVE: Only load first 2 images immediately
+  // MOBILE: Load first 9 images immediately for faster initial view (3 rows on mobile)
+  // DESKTOP: Load first 6 images (2 rows on desktop)
+  const initialLoadCount = isMobile ? 9 : 6;
+
   images.forEach((img, index) => {
     const currentSrc = img.getAttribute('src');
 
-    if(index < 2){
+    if(index < initialLoadCount){
       img.style.opacity = '1';
       img.classList.add('loaded');
       loadedCount++;
@@ -915,42 +927,61 @@
     img.loading = 'lazy';
   });
 
-  // Throttle image loading during scroll
+  // MOBILE: Load 5 images at a time for much faster loading
+  // DESKTOP: Load 2 images at a time
   let loadQueue = [];
   let isLoadingBatch = false;
+  const batchSize = isMobile ? 5 : 2;
+  const batchDelay = isMobile ? 80 : 40;
 
   function processBatch(){
     if(isLoadingBatch || loadQueue.length === 0) return;
 
     isLoadingBatch = true;
-    const img = loadQueue.shift();
-    const dataSrc = img.getAttribute('data-src');
 
-    if(dataSrc && !img.classList.contains('loaded')){
-      img.src = dataSrc;
-      img.removeAttribute('data-src');
+    // Load multiple images at once on mobile
+    const batch = loadQueue.splice(0, batchSize);
+    let batchCompleted = 0;
 
-      img.onload = () => {
-        img.style.opacity = '1';
-        img.classList.add('loaded');
-        loadedCount++;
-        console.log(`✅ Image loaded (${loadedCount}/${totalImages})`);
-        isLoadingBatch = false;
+    batch.forEach(img => {
+      const dataSrc = img.getAttribute('data-src');
 
-        // Process next in queue after small delay
-        setTimeout(processBatch, 50);
-      };
+      if(dataSrc && !img.classList.contains('loaded')){
+        img.src = dataSrc;
+        img.removeAttribute('data-src');
 
-      img.onerror = () => {
-        console.error(`❌ Failed to load image`);
-        img.style.opacity = '0.3';
-        isLoadingBatch = false;
-        setTimeout(processBatch, 50);
-      };
-    } else {
-      isLoadingBatch = false;
-      setTimeout(processBatch, 50);
-    }
+        img.onload = () => {
+          img.style.opacity = '1';
+          img.classList.add('loaded');
+          loadedCount++;
+          console.log(`✅ Image loaded (${loadedCount}/${totalImages})`);
+          batchCompleted++;
+
+          // When all images in batch are loaded, process next batch
+          if(batchCompleted === batch.length){
+            isLoadingBatch = false;
+            setTimeout(processBatch, batchDelay);
+          }
+        };
+
+        img.onerror = () => {
+          console.error(`❌ Failed to load image`);
+          img.style.opacity = '0.3';
+          batchCompleted++;
+
+          if(batchCompleted === batch.length){
+            isLoadingBatch = false;
+            setTimeout(processBatch, batchDelay);
+          }
+        };
+      } else {
+        batchCompleted++;
+        if(batchCompleted === batch.length){
+          isLoadingBatch = false;
+          setTimeout(processBatch, batchDelay);
+        }
+      }
+    });
   }
 
   // Intersection Observer with batched loading
@@ -974,8 +1005,8 @@
       processBatch();
     }
   }, {
-    // Load only when very close to viewport
-    rootMargin: isMobile ? '100px 0px' : '200px 0px',
+    // Load earlier on mobile for smoother experience
+    rootMargin: isMobile ? '300px 0px' : '200px 0px',
     threshold: 0.01
   });
 
@@ -986,7 +1017,9 @@
     }
   });
 
-  // Pause loading during active scrolling
+  // Pause loading during active scrolling (very short delay on mobile for faster loading)
+  const scrollPauseDelay = isMobile ? 50 : 100;
+
   window.addEventListener('scroll', () => {
     isScrolling = true;
     clearTimeout(scrollTimeout);
@@ -994,7 +1027,7 @@
     scrollTimeout = setTimeout(() => {
       isScrolling = false;
       processBatch(); // Resume loading after scroll stops
-    }, 150);
+    }, scrollPauseDelay);
   }, { passive: true });
 
   // Disable hover effects during scroll for better performance
@@ -1008,8 +1041,8 @@
     }, 200);
   }, { passive: true });
 
-  console.log(`✅ Gallery ULTRA optimized - ${loadedCount}/${totalImages} images loaded initially`);
-  console.log('📱 Native scroll enabled (no Lenis on gallery page)');
-  console.log('⚡ Batched loading enabled - images load one at a time');
+  console.log(`✅ Gallery optimized - ${loadedCount}/${totalImages} images loaded initially`);
+  console.log(`📱 Mobile mode: ${isMobile ? 'YES' : 'NO'} - Loading ${batchSize} images at a time`);
+  console.log('⚡ Batched loading enabled for smooth performance');
 })();
 

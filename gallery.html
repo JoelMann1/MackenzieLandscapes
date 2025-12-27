@@ -11,10 +11,24 @@
   <meta name="theme-color" content="#0a0a0a">
   <link rel="canonical" href="https://mackenzielandscapes.uk/gallery.html">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <!-- Preconnect for faster font loading -->
+
+  <!-- DNS Prefetch & Preconnect for performance -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Preload critical CSS -->
+  <link rel="preload" href="assets/css/styles.css" as="style">
   <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Preload JavaScript -->
+  <link rel="preload" href="assets/js/main.js" as="script">
+
+  <!-- Preload first 3 gallery images for instant display -->
+  <link rel="preload" href="assets/img/Racket-Town-Cottage-Tresco-2025-27.jpg" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/img/Racket-Town-Cottage-Tresco-2025-10.jpg" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/img/Racket-Town-Cottage-Tresco-42.jpg" as="image" fetchpriority="high">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -129,19 +143,18 @@
     <div class="anchor-target" id="hardscape" aria-hidden="true"></div>
     <div class="anchor-target" id="planting" aria-hidden="true"></div>
     <div class="gallery-grid">
-      <img src="assets/img/Racket-Town-Cottage-Tresco-2025-27.jpg" alt="Curved stone steps through lush planting" width="800" height="600" loading="lazy" decoding="async">
-      <img src="assets/img/Racket-Town-Cottage-Tresco-2025-10.jpg" alt="Elevated patio with retaining stonework and planting" width="800" height="600" loading="lazy" decoding="async">
-      <img src="assets/img/Racket-Town-Cottage-Tresco-42.jpg" alt="Timber-clad garden building framed by evening light" width="800" height="600" loading="lazy" decoding="async">
-      <img src="assets/img/Racket-Town-Cottage-Tresco-40.jpg" alt="Dining terrace with stone wall and layered borders" width="800" height="600" loading="lazy" decoding="async">
-      <img src="assets/img/Racket-Town-Cottage-Tresco-48.jpg" alt="Garden path across lawn towards a timber shed" width="800" height="600" loading="lazy" decoding="async">
-      <img src="assets/img/Racket-Town-Cottage-Tresco-2025-9.jpg" alt="Aerial view showing terraced garden and curved beds" width="800" height="600" loading="lazy" decoding="async">
+      <img src="assets/img/Racket-Town-Cottage-Tresco-2025-27.jpg" alt="Curved stone steps through lush planting" width="800" height="600" loading="eager" fetchpriority="high" decoding="async">
+      <img src="assets/img/Racket-Town-Cottage-Tresco-2025-10.jpg" alt="Elevated patio with retaining stonework and planting" width="800" height="600" loading="eager" fetchpriority="high" decoding="async">
+      <img src="assets/img/Racket-Town-Cottage-Tresco-42.jpg" alt="Timber-clad garden building framed by evening light" width="800" height="600" loading="eager" fetchpriority="high" decoding="async">
+      <img src="assets/img/Racket-Town-Cottage-Tresco-40.jpg" alt="Dining terrace with stone wall and layered borders" width="800" height="600" loading="eager" decoding="async">
+      <img src="assets/img/Racket-Town-Cottage-Tresco-48.jpg" alt="Garden path across lawn towards a timber shed" width="800" height="600" loading="eager" decoding="async">
+      <img src="assets/img/Racket-Town-Cottage-Tresco-2025-9.jpg" alt="Aerial view showing terraced garden and curved beds" width="800" height="600" loading="eager" decoding="async">
       <img src="assets/img/IMG-5156-1260x945.jpg" alt="Courtyard with tiered planting and stone path" width="1260" height="945" loading="lazy" decoding="async">
       <img src="assets/img/IMG-5199-840x630.jpg" alt="Timber deck framed by soft planting" width="840" height="630" loading="lazy" decoding="async">
       <img src="assets/img/IMG-5294-1024x768.jpg" alt="Curved stone path through structured planting" width="1024" height="768" loading="lazy" decoding="async">
       <img src="assets/img/IMG-5466-1024x768.jpg" alt="Crew installing a bespoke stone terrace" width="1024" height="768" loading="lazy" decoding="async">
       <img src="assets/img/IMG-4079-768x1024.jpg" alt="Designer refining layout drawing at the studio" width="768" height="1024" loading="lazy" decoding="async">
       <img src="assets/img/IMG_8807-1024x768.jpeg" alt="Horticulturalist tending perennial beds" width="1024" height="768" loading="lazy" decoding="async">
-      <img src="assets/img/IMG_8866-1260x1680.jpeg" alt="Mature trees shading a seating area" width="1260" height="1680" loading="lazy" decoding="async">
       <img src="assets/img/IMG-5451-300x225@2x.jpg" alt="Seasonal planters flanking a garden entrance" width="600" height="450" loading="lazy" decoding="async">
       <img src="assets/img/IMG-5225-300x225@2x.jpg" alt="Steel planter and gravel walkway detail" width="600" height="450" loading="lazy" decoding="async">
       <img src="assets/img/IMG-0052-1260x1680.jpg" alt="Garden view with layered hedging and gravel path" width="1260" height="1680" loading="lazy" decoding="async">
@@ -231,7 +244,7 @@
   </div>
 </footer>
 <!-- Lenis removed from gallery page for better performance - using native scroll -->
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
 
